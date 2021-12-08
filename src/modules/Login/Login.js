@@ -3,12 +3,11 @@ const bcrypt = require("bcrypt");
 const { signUser } = require("../../lib/jwt");
 module.exports = {
   Login: async (req, res) => {
-    // const { username, password } = req.body;
-    console.log(req.body);
+    const { username, password } = req.body;
     if ((username, password)) {
       try {
         const data = await model.exists(username);
-        if (data.length >= 1) {
+        if (data?.length >= 1) {
           Number(password);
           const match = await bcrypt.compare(password, data[0].user_password);
           if (match) {
