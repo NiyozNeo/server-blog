@@ -2,16 +2,16 @@ const express = require("express");
 
 const Reg = require("./reg/reg");
 const Login = require("./Login/Login");
-const AdminUsers = require("./Admin/Users/Users");
-const Verify = require("./Admin/Verify/Verify");
-const Delete = require("./Admin/Delete/Delete");
+const Delete = require("./Admin/DeletePost/DeletePost");
+const CreatePost = require("./Admin/CreatePost/CreatePost");
+const Posts = require("./Posts/Posts");
 const router = express.Router();
 
 router
   .post("/reg", Reg.REGISTER)
   .post("/login", Login.Login)
-  .get("/admin/users", AdminUsers.Clinics)
-  .post("/update", Verify.post)
-  .post("/delete", Delete.post);
+  .post("/createpost" , CreatePost.Create)
+  .post("/delete", Delete.post)
+  .get("/posts", Posts.get)
 
 module.exports = router;

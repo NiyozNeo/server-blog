@@ -1,8 +1,19 @@
 const model = require("./model");
-
+const { v4: uuid } = require("uuid");
+const path = require("path")
 module.exports = {
   Create: async (req, res) => {
-    const { token } = req.body;
-    res.status(200).send(data);
+    const { title, text } = req.body;
+    const { poster } = req.files;
+
+    if (poster && title && text) {
+      const newName = `${uuid()}.${poster.mimetype.split("/")[1]}`;
+      poster.mv(
+        path.join(process.cwd() + "/src/uploads/" + newName),
+        (_) => {}
+      );
+      const resP = await model.createP(title , text , newName)
+      res.status(200).send(resP);
+    }
   },
 };

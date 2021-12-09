@@ -11,12 +11,12 @@ create table posts(
     post_title text not null,
     post_text text not null,
     post_img text,
-    post_status boolean default true,
+    post_status boolean default true
 );
 
 create table comments(
     comment_id serial primary key,
     comment_author int references users(user_id) not null,
     comment_text text not null,
-    comment_ref int references comments(comment_id) default null,
+    comment_ref int references comments(comment_id) default null
 );
