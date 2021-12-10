@@ -5,6 +5,7 @@ const Login = require("./Login/Login");
 const Delete = require("./Admin/DeletePost/DeletePost");
 const CreatePost = require("./Admin/CreatePost/CreatePost");
 const Posts = require("./Posts/Posts");
+const check = require("./check/check");
 const router = express.Router();
 
 router
@@ -13,5 +14,6 @@ router
   .post("/createpost" , CreatePost.Create)
   .post("/delete", Delete.post)
   .get("/posts", Posts.get)
+  .post("/check", check.CHECK)
 
 module.exports = router;

@@ -18,5 +18,4 @@ create table comments(
     comment_id serial primary key,
     comment_author int references users(user_id) not null,
     comment_text text not null,
-    comment_ref int references comments(comment_id) default null
 );
