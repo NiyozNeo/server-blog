@@ -6,14 +6,14 @@ module.exports = {
   REGISTER: async (req, res) => {
     try {
       const { username, password, phone } = req.body;
-      if ((username, password, phone)) {
+      if (username && password && phone) {
         Number(password);
         const salt = await bcrypt.genSalt(10);
         const bcryptPassword = await bcrypt.hash(password, salt);
 
         const existing = await model.exists(username);
 
-        if (existing.length == 1) {
+        if (existing) {
           res.status(400).send("Already exists...");
           return;
         }
