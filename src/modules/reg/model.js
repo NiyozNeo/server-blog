@@ -16,8 +16,8 @@ const EXISTING_USER = `
 `;
 
 const exists = (username) => pg(EXISTING_USER, username);
-const register = (username, password, phone) =>
-  pg(REGISTER, username, password, phone);
+const register = (username, password) =>
+  pg(REGISTER, username, password);
 
 module.exports = {
   register,

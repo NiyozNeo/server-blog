@@ -5,8 +5,8 @@ const { signUser } = require("../../lib/jwt");
 module.exports = {
   REGISTER: async (req, res) => {
     try {
-      const { username, password, phone } = req.body;
-      if (username && password && phone) {
+      const { username, password } = req.body;
+      if (username && password) {
         Number(password);
         const salt = await bcrypt.genSalt(10);
         const bcryptPassword = await bcrypt.hash(password, salt);
@@ -18,7 +18,7 @@ module.exports = {
           return;
         }
 
-        const newUser = await model.register(username, bcryptPassword, phone);
+        const newUser = await model.register(username, bcryptPassword);
         if (newUser) {
           res.status(201).json({
             message: "User created",
