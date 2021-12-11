@@ -1,7 +1,7 @@
 create table users(
     user_id serial primary key,
     user_username varchar(32) not null,
-    user_password varchar(32) not null,
+    user_password text not null,
     is_admin boolean default false,
     user_created_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );

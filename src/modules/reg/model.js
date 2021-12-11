@@ -1,14 +1,7 @@
 const pg = require("../../lib/postgres");
 
 const REGISTER = `
-    INSERT INTO
-        users(
-          user_username, 
-          user_password,
-        )
-    VALUES ($1, $2, $3)
-    RETURNING
-            *
+    INSERT INTO users(user_username, user_password) VALUES ($1, $2) RETURNING *
 `;
 
 const EXISTING_USER = `
@@ -16,8 +9,7 @@ const EXISTING_USER = `
 `;
 
 const exists = (username) => pg(EXISTING_USER, username);
-const register = (username, password) =>
-  pg(REGISTER, username, password);
+const register = (username, password) => pg(REGISTER, username, password);
 
 module.exports = {
   register,
