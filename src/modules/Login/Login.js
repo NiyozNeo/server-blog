@@ -4,7 +4,7 @@ const { signUser } = require("../../lib/jwt");
 module.exports = {
   Login: async (req, res) => {
     const { username, password } = req.body;
-    if ((username, password)) {
+    if (username && password) {
       try {
         const data = await model.exists(username);
         if (data?.length >= 1) {
